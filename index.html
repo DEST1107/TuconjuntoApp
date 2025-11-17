@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TuConjunto App - Navegación</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ============= HEADER ============= -->
+    <header class="app-header">
+        <div class="logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/148/148717.png" alt="Logo">
+            <span class="title">TuConjunto App</span>
+        </div>
+    </header>
+
+    <!-- ============= NAV SUPERIOR ============= -->
+    <nav class="main-nav">
+        <a href="#" class="nav-btn active" data-section="inicio">Inicio</a>
+        <a href="#" class="nav-btn" data-section="pagos">Pagos</a>
+        <a href="#" class="nav-btn" data-section="incidencias">Incidencias</a>
+        <a href="#" class="nav-btn" data-section="noticias">Noticias</a>
+        <a href="#" class="nav-btn" data-section="perfil">Perfil</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- ============= SECCIÓN: INICIO ============= -->
+        <section id="inicio" class="app-section visible">
+            <h1>Panel Principal</h1>
+            <p>Bienvenido a tu conjunto. Gestiona pagos, reporta incidencias y mantente informado.</p>
+
+            <div class="cards-row">
+                <div class="card small-card"><h3>Pagos Pendientes</h3><span class="badge badge-warning">2</span></div>
+                <div class="card small-card"><h3>Incidencias Abiertas</h3><span class="badge badge-danger">1</span></div>
+                <div class="card small-card"><h3>Noticias Nuevas</h3><span class="badge badge-success">3</span></div>
+            </div>
+        </section>
+
+        <!-- ============= SECCIÓN: PAGOS ============= -->
+        <section id="pagos" class="app-section hidden">
+            <h1>Pagos del Conjunto</h1>
+
+            <div class="card">
+                <h3>Últimos Pagos</h3>
+                <ul>
+                    <li>Administración Abril — <b>$120.000</b> — ✓ Pagado</li>
+                    <li>Administración Mayo — <b>$120.000</b> — Pendiente</li>
+                    <li>Parqueadero — <b>$45.000</b> — ✓ Pagado</li>
+                </ul>
+            </div>
+
+            <button class="btn btn-primary mt-2">Pagar en Línea</button>
+        </section>
+
+        <!-- ============= SECCIÓN: INCIDENCIAS ============= -->
+        <section id="incidencias" class="app-section hidden">
+            <h1>Reportar Incidencia</h1>
+
+            <div class="card">
+                <form>
+                    <label>Tipo de incidencia</label>
+                    <select class="input">
+                        <option>Ruido</option>
+                        <option>Daños</option>
+                        <option>Iluminación</option>
+                        <option>Seguridad</option>
+                    </select>
+
+                    <label class="mt-1">Descripción</label>
+                    <textarea placeholder="Explique lo ocurrido..."></textarea>
+
+                    <button class="btn btn-primary btn-block mt-2">Enviar reporte</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ============= SECCIÓN: NOTICIAS ============= -->
+        <section id="noticias" class="app-section hidden">
+            <h1>Noticias del Conjunto</h1>
+
+            <div class="card news">
+                <h3>Mantenimiento de zonas verdes</h3>
+                <p>El martes se realizará mantenimiento general.</p>
+                <p class="meta">Publicado el 3 de mayo</p>
+            </div>
+
+            <div class="card news">
+                <h3>Actualización portería</h3>
+                <p>Ingreso ahora con código QR obligatorio.</p>
+                <p class="meta">Publicado el 1 de mayo</p>
+            </div>
+        </section>
+
+        <!-- ============= SECCIÓN: PERFIL ============= -->
+        <section id="perfil" class="app-section hidden">
+            <h1>Mi Perfil</h1>
+
+            <div class="card">
+                <p><b>Nombre:</b> Nazar Daniel</p>
+                <p><b>Apartamento:</b> 302 Torre B</p>
+                <p><b>Email:</b> nazar@example.com</p>
+                <button class="btn">Editar Perfil</button>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ============= JS: NAVEGACIÓN ============= -->
+    <script>
+        const buttons = document.querySelectorAll(".nav-btn");
+        const sections = document.querySelectorAll(".app-section");
+
+        buttons.forEach(btn => {
+            btn.addEventListener("click", () => {
+
+                // Quitar activo de botones
+                buttons.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+
+                // Ocultar todas las secciones
+                sections.forEach(sec => sec.classList.add("hidden"));
+                sections.forEach(sec => sec.classList.remove("visible"));
+
+                // Mostrar la sección seleccionada
+                const target = btn.dataset.section;
+                document.getElementById(target).classList.remove("hidden");
+                document.getElementById(target).classList.add("visible");
+            });
+        });
+    </script>
+
+</body>
+</html>
+
