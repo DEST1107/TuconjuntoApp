@@ -1,0 +1,11 @@
+*.class
+*.log
+*.zip
+*.msi
+
+.vscode/
+bin/
+out/
+target/
+
+Backend/TuConjuntoJDBC/src/com/tuconjuntoapp/openJdk-25/

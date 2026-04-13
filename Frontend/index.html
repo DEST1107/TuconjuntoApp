@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuConjunto App | Portal del Residente</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-shell">
+        <aside class="sidebar">
+            <div class="brand-card">
+                <div class="brand-mark">TC</div>
+                <div>
+                    <p class="eyebrow">Conjunto Residencial</p>
+                    <h1 class="brand-title">TuConjunto App</h1>
+                    <p class="brand-copy">Portal digital para residentes, administraci&oacute;n y porter&iacute;a.</p>
+                </div>
+            </div>
+
+            <nav class="side-nav" aria-label="Secciones principales">
+                <button class="nav-btn active" data-section="inicio">Inicio</button>
+                <button class="nav-btn" data-section="pagos">Pagos</button>
+                <button class="nav-btn" data-section="reservas">Reservas</button>
+                <button class="nav-btn" data-section="horarios">Horarios</button>
+                <button class="nav-btn" data-section="noticias">Noticias</button>
+                <button class="nav-btn" data-section="contacto">Contacto</button>
+                <button class="nav-btn" data-section="perfil">Perfil</button>
+            </nav>
+
+            <div class="sidebar-note">
+                <p class="eyebrow">Usabilidad aplicada</p>
+                <ul class="check-list">
+                    <li>Navegaci&oacute;n visible y consistente.</li>
+                    <li>Informaci&oacute;n priorizada por tareas frecuentes.</li>
+                    <li>Indicadores claros de pagos, reservas y noticias.</li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">M&oacute;dulo inicial</p>
+                    <h2 class="topbar-title">Experiencia del residente</h2>
+                </div>
+
+                <div class="resident-pill">
+                    <div class="resident-avatar">ND</div>
+                    <div>
+                        <strong>Nazar Daniel</strong>
+                        <span>Torre B - Apto 302</span>
+                    </div>
+                </div>
+            </header>
+
+            <section id="inicio" class="app-section visible" aria-labelledby="titulo-inicio">
+                <div class="hero-panel">
+                    <div>
+                        <p class="eyebrow">Panel principal</p>
+                        <h3 id="titulo-inicio">Todo lo importante del conjunto en un solo lugar</h3>
+                        <p class="hero-copy">
+                            El residente puede consultar pagos, noticias, reservas, horarios y canales de contacto
+                            sin desplazarse a administraci&oacute;n.
+                        </p>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary" data-jump="pagos">Ver estado de cuenta</button>
+                            <button class="btn btn-secondary" data-jump="reservas">Reservar zona com&uacute;n</button>
+                        </div>
+                    </div>
+
+                    <div class="hero-stats">
+                        <article class="metric-card highlight">
+                            <span class="metric-label">Saldo pendiente</span>
+                            <strong>$120.000</strong>
+                            <small>Administraci&oacute;n de mayo</small>
+                        </article>
+                        <article class="metric-card">
+                            <span class="metric-label">Noticias nuevas</span>
+                            <strong>3</strong>
+                            <small>Actualizadas esta semana</small>
+                        </article>
+                        <article class="metric-card">
+                            <span class="metric-label">Pr&oacute;xima reserva</span>
+                            <strong>18 mayo</strong>
+                            <small>Sal&oacute;n comunal - 6:00 p. m.</small>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <article class="content-card">
+                        <div class="section-head">
+                            <div>
+                                <p class="eyebrow">Accesos r&aacute;pidos</p>
+                                <h3>Tareas frecuentes del residente</h3>
+                            </div>
+                        </div>
+
+                        <div class="quick-grid">
+                            <button class="quick-card" data-jump="pagos">
+                                <strong>Pagar administraci&oacute;n</strong>
+                                <span>Consulta tu deuda y medios de pago disponibles.</span>
+                            </button>
+                            <button class="quick-card" data-jump="reservas">
+                                <strong>Reservar sal&oacute;n comunal</strong>
+                                <span>Selecciona fecha, hora y revisa disponibilidad.</span>
+                            </button>
+                            <button class="quick-card" data-jump="horarios">
+                                <strong>Ver horarios</strong>
+                                <span>Piscina, cancha y zonas de uso com&uacute;n.</span>
+                            </button>
+                            <button class="quick-card" data-jump="contacto">
+                                <strong>Contactar administraci&oacute;n</strong>
+                                <span>Canales directos con administradora, contador y porter&iacute;a.</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="content-card">
+                        <div class="section-head">
+                            <div>
+                                <p class="eyebrow">Resumen financiero</p>
+                                <h3>Estado del conjunto</h3>
+                            </div>
+                        </div>
+
+                        <div class="finance-bars" aria-label="Balance resumido del conjunto">
+                            <div class="bar-item">
+                                <span>Ingresos</span>
+                                <div class="bar-track"><div class="bar-fill income" style="width: 84%;"></div></div>
+                                <strong>$18.400.000</strong>
+                            </div>
+                            <div class="bar-item">
+                                <span>Gastos</span>
+                                <div class="bar-track"><div class="bar-fill expense" style="width: 62%;"></div></div>
+                                <strong>$13.600.000</strong>
+                            </div>
+                            <div class="bar-item">
+                                <span>Fondo disponible</span>
+                                <div class="bar-track"><div class="bar-fill savings" style="width: 36%;"></div></div>
+                                <strong>$4.800.000</strong>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="pagos" class="app-section hidden" aria-labelledby="titulo-pagos">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Pagos y cartera</p>
+                        <h3 id="titulo-pagos">Estado de cuenta del residente</h3>
+                    </div>
+                    <button class="btn btn-primary">Pagar en l&iacute;nea</button>
+                </div>
+
+                <div class="cards-inline">
+                    <article class="mini-panel alert-pending">
+                        <span class="mini-label">Cuota pendiente</span>
+                        <strong>$120.000</strong>
+                        <small>Vence el 30 de mayo</small>
+                    </article>
+                    <article class="mini-panel alert-ok">
+                        <span class="mini-label">Acuerdo de pago</span>
+                        <strong>Activo</strong>
+                        <small>2 cuotas restantes</small>
+                    </article>
+                    <article class="mini-panel alert-neutral">
+                        <span class="mini-label">Multas</span>
+                        <strong>0</strong>
+                        <small>No registras sanciones</small>
+                    </article>
+                </div>
+
+                <article class="content-card">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Concepto</th>
+                                <th>Periodo</th>
+                                <th>Valor</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Administraci&oacute;n</td>
+                                <td>Mayo 2026</td>
+                                <td>$120.000</td>
+                                <td><span class="status-badge pending">Pendiente</span></td>
+                            </tr>
+                            <tr>
+                                <td>Parqueadero</td>
+                                <td>Mayo 2026</td>
+                                <td>$45.000</td>
+                                <td><span class="status-badge success">Pagado</span></td>
+                            </tr>
+                            <tr>
+                                <td>Administraci&oacute;n</td>
+                                <td>Abril 2026</td>
+                                <td>$120.000</td>
+                                <td><span class="status-badge success">Pagado</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+            </section>
+
+            <section id="reservas" class="app-section hidden" aria-labelledby="titulo-reservas">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Zonas comunes</p>
+                        <h3 id="titulo-reservas">Reservas del residente</h3>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <article class="content-card">
+                        <form id="reserva-form" class="form-grid">
+                            <div>
+                                <label for="espacio">Espacio a reservar</label>
+                                <select id="espacio" class="input">
+                                    <option>Sal&oacute;n comunal</option>
+                                    <option>Cancha m&uacute;ltiple</option>
+                                    <option>Zona BBQ</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="fecha-reserva">Fecha</label>
+                                <input id="fecha-reserva" class="input" type="date">
+                            </div>
+                            <div>
+                                <label for="hora-reserva">Hora</label>
+                                <input id="hora-reserva" class="input" type="time">
+                            </div>
+                            <div>
+                                <label for="detalle-reserva">Observaciones</label>
+                                <textarea id="detalle-reserva" placeholder="Ejemplo: reuni&oacute;n familiar para 20 personas"></textarea>
+                            </div>
+                            <button class="btn btn-primary btn-block" type="submit">Solicitar reserva</button>
+                        </form>
+                    </article>
+
+                    <article class="content-card">
+                        <p class="eyebrow">Pr&oacute;ximas reservas</p>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <strong>18 de mayo - Sal&oacute;n comunal</strong>
+                                <span>6:00 p. m. a 10:00 p. m. - Aprobada</span>
+                            </div>
+                            <div class="timeline-item">
+                                <strong>22 de mayo - Zona BBQ</strong>
+                                <span>12:00 m. a 4:00 p. m. - Pendiente aprobaci&oacute;n</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="horarios" class="app-section hidden" aria-labelledby="titulo-horarios">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Consulta r&aacute;pida</p>
+                        <h3 id="titulo-horarios">Horarios de zonas comunes</h3>
+                    </div>
+                </div>
+
+                <div class="day-filter" role="tablist" aria-label="Filtrar horarios por d&iacute;a">
+                    <button class="day-btn active" data-day="lunes">Lunes</button>
+                    <button class="day-btn" data-day="martes">Martes</button>
+                    <button class="day-btn" data-day="miercoles">Mi&eacute;rcoles</button>
+                    <button class="day-btn" data-day="jueves">Jueves</button>
+                    <button class="day-btn" data-day="viernes">Viernes</button>
+                </div>
+
+                <div class="schedule-list">
+                    <article class="schedule-card" data-day="lunes">
+                        <strong>Piscina</strong>
+                        <span>6:00 a. m. - 8:00 p. m.</span>
+                    </article>
+                    <article class="schedule-card" data-day="lunes">
+                        <strong>Cancha m&uacute;ltiple</strong>
+                        <span>5:00 a. m. - 10:00 p. m.</span>
+                    </article>
+                    <article class="schedule-card" data-day="lunes">
+                        <strong>Gimnasio</strong>
+                        <span>5:00 a. m. - 9:00 p. m.</span>
+                    </article>
+                    <article class="schedule-card hidden-card" data-day="martes">
+                        <strong>Piscina</strong>
+                        <span>8:00 a. m. - 8:00 p. m. · Mantenimiento en la ma&ntilde;ana</span>
+                    </article>
+                    <article class="schedule-card hidden-card" data-day="martes">
+                        <strong>Cancha m&uacute;ltiple</strong>
+                        <span>5:00 a. m. - 10:00 p. m.</span>
+                    </article>
+                    <article class="schedule-card hidden-card" data-day="miercoles">
+                        <strong>Piscina</strong>
+                        <span>6:00 a. m. - 8:00 p. m.</span>
+                    </article>
+                    <article class="schedule-card hidden-card" data-day="miercoles">
+                        <strong>Sal&oacute;n social</strong>
+                        <span>Disponible para reservas de 8:00 a. m. a 10:00 p. m.</span>
+                    </article>
+                    <article class="schedule-card hidden-card" data-day="jueves">
+                        <strong>Cancha m&uacute;ltiple</strong>
+                        <span>Torneo interno desde las 6:00 p. m.</span>
+                    </article>
+                    <article class="schedule-card hidden-card" data-day="jueves">
+                        <strong>Gimnasio</strong>
+                        <span>5:00 a. m. - 9:00 p. m.</span>
+                    </article>
+                    <article class="schedule-card hidden-card" data-day="viernes">
+                        <strong>Piscina</strong>
+                        <span>6:00 a. m. - 9:00 p. m.</span>
+                    </article>
+                    <article class="schedule-card hidden-card" data-day="viernes">
+                        <strong>Zona BBQ</strong>
+                        <span>Alta demanda desde las 4:00 p. m.</span>
+                    </article>
+                </div>
+            </section>
+
+            <section id="noticias" class="app-section hidden" aria-labelledby="titulo-noticias">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Comunidad informada</p>
+                        <h3 id="titulo-noticias">Noticias y comunicados</h3>
+                    </div>
+                </div>
+
+                <div class="news-grid">
+                    <article class="news-card featured">
+                        <span class="news-tag">Destacada</span>
+                        <h4>Actualizaci&oacute;n de ingreso con c&oacute;digo QR</h4>
+                        <p>Desde el lunes el ingreso peatonal se registrar&aacute; mediante c&oacute;digo QR para mayor seguridad.</p>
+                        <small>Publicada por administraci&oacute;n - 13 de abril</small>
+                    </article>
+                    <article class="news-card">
+                        <span class="news-tag neutral">Mantenimiento</span>
+                        <h4>Cierre temporal de piscina</h4>
+                        <p>La piscina estar&aacute; en mantenimiento el martes de 6:00 a. m. a 8:00 a. m.</p>
+                        <small>Publicada por administraci&oacute;n - 11 de abril</small>
+                    </article>
+                    <article class="news-card">
+                        <span class="news-tag neutral">Finanzas</span>
+                        <h4>Balance mensual disponible</h4>
+                        <p>Ya se encuentra publicado el resumen de ingresos y gastos del mes en el panel del residente.</p>
+                        <small>Publicada por contador - 9 de abril</small>
+                    </article>
+                </div>
+            </section>
+
+            <section id="contacto" class="app-section hidden" aria-labelledby="titulo-contacto">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Canales de atenci&oacute;n</p>
+                        <h3 id="titulo-contacto">Contacto con el conjunto</h3>
+                    </div>
+                </div>
+
+                <div class="contact-grid">
+                    <article class="contact-card">
+                        <strong>Administradora</strong>
+                        <span>Mar&iacute;a Fernanda Rojas</span>
+                        <a href="mailto:administracion@tuconjunto.com">administracion@tuconjunto.com</a>
+                        <a href="tel:+573001112233">300 111 2233</a>
+                    </article>
+                    <article class="contact-card">
+                        <strong>Contador</strong>
+                        <span>Juli&aacute;n G&oacute;mez</span>
+                        <a href="mailto:contabilidad@tuconjunto.com">contabilidad@tuconjunto.com</a>
+                        <a href="tel:+573002224455">300 222 4455</a>
+                    </article>
+                    <article class="contact-card">
+                        <strong>Porter&iacute;a</strong>
+                        <span>Atenci&oacute;n 24/7</span>
+                        <a href="tel:+573003335566">300 333 5566</a>
+                        <span>Extensi&oacute;n interna 101</span>
+                    </article>
+                </div>
+            </section>
+
+            <section id="perfil" class="app-section hidden" aria-labelledby="titulo-perfil">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Cuenta del residente</p>
+                        <h3 id="titulo-perfil">Perfil y datos del apartamento</h3>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <article class="content-card profile-card">
+                        <div class="resident-avatar large">ND</div>
+                        <h4>Nazar Daniel Solarte</h4>
+                        <p>Propietario residente</p>
+                        <ul class="profile-list">
+                            <li><strong>Documento:</strong> 1.000.000.000</li>
+                            <li><strong>Correo:</strong> nazar@example.com</li>
+                            <li><strong>Tel&eacute;fono:</strong> 300 000 0000</li>
+                        </ul>
+                    </article>
+
+                    <article class="content-card">
+                        <h4>Informaci&oacute;n del inmueble</h4>
+                        <ul class="profile-list">
+                            <li><strong>Torre:</strong> B</li>
+                            <li><strong>Apartamento:</strong> 302</li>
+                            <li><strong>Coeficiente:</strong> 4.20%</li>
+                            <li><strong>Estado:</strong> Al d&iacute;a con cartera ordinaria</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <nav class="mobile-nav" aria-label="Navegaci&oacute;n inferior">
+        <button class="nav-btn active" data-section="inicio">Inicio</button>
+        <button class="nav-btn" data-section="pagos">Pagos</button>
+        <button class="nav-btn" data-section="reservas">Reservas</button>
+        <button class="nav-btn" data-section="noticias">Noticias</button>
+        <button class="nav-btn" data-section="perfil">Perfil</button>
+    </nav>
+
+    <script src="app.js"></script>
+</body>
+</html>
