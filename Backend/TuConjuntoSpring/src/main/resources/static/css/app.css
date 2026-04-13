@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f6f8;
+    color: #22303a;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 20px;
+}
+
+.panel {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 10px 28px rgba(34, 48, 58, 0.08);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: #6a7c85;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.subcopy {
+    margin: 8px 0 0;
+    color: #6a7c85;
+}
+
+.search-form,
+.actions,
+.form-grid {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.form-grid .full-width {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input,
+select,
+button,
+.btn {
+    padding: 12px 14px;
+    border-radius: 10px;
+    font: inherit;
+}
+
+input,
+select {
+    width: 100%;
+    border: 1px solid #cfd8df;
+    background: #ffffff;
+}
+
+.btn,
+button {
+    border: none;
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: #0f766e;
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background: #ffffff;
+    color: #22303a;
+    border: 1px solid #cfd8df;
+}
+
+.btn-danger {
+    background: #c64747;
+    color: #ffffff;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.data-table th,
+.data-table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #e4eaee;
+    text-align: left;
+}
+
+.message {
+    padding: 12px 16px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    background: #e8f7f2;
+    color: #0f766e;
+}
+
+.error {
+    display: block;
+    margin-top: 6px;
+    color: #b64040;
+    font-size: 13px;
+}
+
+@media (max-width: 760px) {
+    .panel-header,
+    .search-form,
+    .actions,
+    .form-grid {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+}

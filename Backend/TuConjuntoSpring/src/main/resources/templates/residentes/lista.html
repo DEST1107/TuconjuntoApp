@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Residentes</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+    <main class="container">
+        <section class="panel">
+            <header class="panel-header">
+                <div>
+                    <p class="eyebrow">Framework Java aplicado</p>
+                    <h1>Gestion de Residentes</h1>
+                    <p class="subcopy">Modulo web construido con Spring Boot, Thymeleaf y JDBC.</p>
+                </div>
+                <a class="btn btn-primary" th:href="@{/residentes/nuevo}">Nuevo residente</a>
+            </header>
+
+            <div class="message" th:if="${mensaje}" th:text="${mensaje}"></div>
+
+            <form class="search-form" method="get" th:action="@{/residentes}">
+                <input type="text" name="correo" placeholder="Buscar por correo" th:value="${correoBuscado}">
+                <button class="btn btn-primary" type="submit">Buscar</button>
+                <a class="btn btn-secondary" th:href="@{/residentes}">Limpiar</a>
+            </form>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Documento</th>
+                        <th>Correo</th>
+                        <th>Telefono</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${#lists.isEmpty(residentes)}">
+                        <td colspan="8">No hay residentes registrados.</td>
+                    </tr>
+                    <tr th:each="residente : ${residentes}">
+                        <td th:text="${residente.idUsuario}"></td>
+                        <td th:text="${residente.nombres}"></td>
+                        <td th:text="${residente.apellidos}"></td>
+                        <td>
+                            <span th:text="${residente.tipoDocumento}"></span>
+                            -
+                            <span th:text="${residente.numeroDocumento}"></span>
+                        </td>
+                        <td th:text="${residente.correo}"></td>
+                        <td th:text="${residente.telefono}"></td>
+                        <td th:text="${residente.estado}"></td>
+                        <td class="actions">
+                            <a class="btn btn-secondary"
+                               th:href="@{/residentes/editar/{id}(id=${residente.idUsuario})}">
+                                Editar
+                            </a>
+                            <form method="post" th:action="@{/residentes/eliminar/{id}(id=${residente.idUsuario})}">
+                                <button class="btn btn-danger" type="submit">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

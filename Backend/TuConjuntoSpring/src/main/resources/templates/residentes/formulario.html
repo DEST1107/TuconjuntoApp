@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${tituloFormulario}">Formulario de residente</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+    <main class="container">
+        <section class="panel form-panel">
+            <header class="panel-header">
+                <div>
+                    <p class="eyebrow">Spring Boot + Thymeleaf</p>
+                    <h1 th:text="${tituloFormulario}">Formulario</h1>
+                </div>
+                <a class="btn btn-secondary" th:href="@{/residentes}">Volver</a>
+            </header>
+
+            <form th:action="@{/residentes/guardar}" th:object="${residente}" method="post" class="form-grid">
+                <input type="hidden" th:field="*{idUsuario}">
+
+                <div>
+                    <label for="nombres">Nombres</label>
+                    <input id="nombres" type="text" th:field="*{nombres}">
+                    <small class="error" th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}"></small>
+                </div>
+
+                <div>
+                    <label for="apellidos">Apellidos</label>
+                    <input id="apellidos" type="text" th:field="*{apellidos}">
+                    <small class="error" th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"></small>
+                </div>
+
+                <div>
+                    <label for="tipoDocumento">Tipo de documento</label>
+                    <select id="tipoDocumento" th:field="*{tipoDocumento}">
+                        <option value="CC">CC</option>
+                        <option value="CE">CE</option>
+                        <option value="TI">TI</option>
+                        <option value="PASAPORTE">PASAPORTE</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="numeroDocumento">Numero de documento</label>
+                    <input id="numeroDocumento" type="text" th:field="*{numeroDocumento}">
+                    <small class="error" th:if="${#fields.hasErrors('numeroDocumento')}" th:errors="*{numeroDocumento}"></small>
+                </div>
+
+                <div>
+                    <label for="correo">Correo</label>
+                    <input id="correo" type="email" th:field="*{correo}">
+                    <small class="error" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></small>
+                </div>
+
+                <div>
+                    <label for="telefono">Telefono</label>
+                    <input id="telefono" type="text" th:field="*{telefono}">
+                    <small class="error" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
+                </div>
+
+                <div>
+                    <label for="passwordHash">Contrasena</label>
+                    <input id="passwordHash" type="text" th:field="*{passwordHash}">
+                    <small class="error" th:if="${#fields.hasErrors('passwordHash')}" th:errors="*{passwordHash}"></small>
+                </div>
+
+                <div>
+                    <label for="estado">Estado</label>
+                    <select id="estado" th:field="*{estado}">
+                        <option value="ACTIVO">ACTIVO</option>
+                        <option value="INACTIVO">INACTIVO</option>
+                        <option value="BLOQUEADO">BLOQUEADO</option>
+                    </select>
+                </div>
+
+                <div class="full-width">
+                    <button class="btn btn-primary" type="submit">Guardar residente</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
