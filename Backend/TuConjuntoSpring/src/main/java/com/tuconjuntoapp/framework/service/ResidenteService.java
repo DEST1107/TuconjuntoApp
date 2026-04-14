@@ -2,6 +2,7 @@ package com.tuconjuntoapp.framework.service;
 
 import com.tuconjuntoapp.framework.model.Residente;
 import com.tuconjuntoapp.framework.repository.ResidenteRepository;
+import com.tuconjuntoapp.framework.util.PasswordEncoderUtil;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,8 @@ public class ResidenteService {
 
     // Centraliza la decision entre crear o actualizar para mantener simple el controlador.
     public void guardar(Residente residente) {
+        normalizarPassword(residente);
+
         if (residente.getIdUsuario() == null) {
             if (residente.getEstado() == null || residente.getEstado().trim().isEmpty()) {
                 residente.setEstado("ACTIVO");
@@ -40,5 +43,12 @@ public class ResidenteService {
 
     public void eliminar(Integer idUsuario) {
         residenteRepository.eliminar(idUsuario);
+    }
+
+    private void normalizarPassword(Residente residente) {
+        // Se evita guardar contrasenas en texto plano y tambien se previene un doble hash.
+        if (!PasswordEncoderUtil.looksEncoded(residente.getPasswordHash())) {
+            residente.setPasswordHash(PasswordEncoderUtil.encode(residente.getPasswordHash()));
+        }
     }
 }
