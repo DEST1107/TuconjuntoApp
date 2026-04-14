@@ -1,0 +1,432 @@
+{
+  "info": {
+    "_postman_id": "4f92f9cf-1b6d-4ad1-a7ce-76d85c596d7d",
+    "name": "TuConjuntoApp API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Register",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const suffix = Date.now().toString();",
+              "pm.collectionVariables.set('registerEmail', `residente${suffix}@tuconjunto.com`);",
+              "pm.collectionVariables.set('registerDocument', suffix);",
+              "pm.collectionVariables.set('registerPassword', '1234');"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Registro responde 201', function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "const json = pm.response.json();",
+              "pm.test('Registro exitoso', function () {",
+              "    pm.expect(json.autenticado).to.eql(true);",
+              "    pm.expect(json.mensaje).to.eql('Registro satisfactorio.');",
+              "});",
+              "pm.collectionVariables.set('residentId', json.idUsuario);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuario\": \"{{registerEmail}}\",\n  \"password\": \"{{registerPassword}}\",\n  \"nombres\": \"Nazar\",\n  \"apellidos\": \"Solarte\",\n  \"tipoDocumento\": \"CC\",\n  \"numeroDocumento\": \"{{registerDocument}}\",\n  \"telefono\": \"3001112233\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/register",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Auth - Login Correcto",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Login responde 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "const json = pm.response.json();",
+              "pm.test('Autenticacion satisfactoria', function () {",
+              "    pm.expect(json.autenticado).to.eql(true);",
+              "    pm.expect(json.mensaje).to.eql('Autenticacion satisfactoria.');",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuario\": \"{{registerEmail}}\",\n  \"password\": \"{{registerPassword}}\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Auth - Login Invalido",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Login invalido responde 401', function () {",
+              "    pm.response.to.have.status(401);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuario\": \"{{registerEmail}}\",\n  \"password\": \"incorrecta\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Residentes - Listar",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Listado de residentes responde 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/residentes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "residentes"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Residentes - Buscar Por Id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Consulta de residente responde 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/residentes/{{residentId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "residentes",
+            "{{residentId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Noticias - Crear",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Creacion de noticia responde 201', function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "const json = pm.response.json();",
+              "pm.collectionVariables.set('newsId', json.idNoticia);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"idUsuarioAutor\": {{residentId}},\n  \"titulo\": \"Mantenimiento preventivo de ascensores\",\n  \"contenido\": \"Se realizara mantenimiento por torres en la jornada de la manana.\",\n  \"fechaExpiracion\": \"2026-05-30T18:00:00\",\n  \"prioridad\": \"ALTA\",\n  \"publicada\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/noticias",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "noticias"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Noticias - Listar",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/noticias",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "noticias"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Incidencias - Crear",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Creacion de incidencia responde 201', function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "const json = pm.response.json();",
+              "pm.collectionVariables.set('incidentId', json.idIncidencia);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"idUsuarioReporta\": {{residentId}},\n  \"categoria\": \"RUIDO\",\n  \"titulo\": \"Ruido excesivo en la noche\",\n  \"descripcion\": \"Se presenta musica a alto volumen despues de las 11 p. m.\",\n  \"prioridad\": \"MEDIA\",\n  \"estado\": \"ABIERTA\",\n  \"ubicacion\": \"Torre B - piso 3\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/incidencias",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "incidencias"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Incidencias - Listar",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/incidencias",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "incidencias"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Reservas - Crear",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Creacion de reserva responde 201', function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "const json = pm.response.json();",
+              "pm.collectionVariables.set('reservationId', json.idReserva);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"idUsuario\": {{residentId}},\n  \"areaComun\": \"Salon comunal\",\n  \"fechaReserva\": \"2026-05-18\",\n  \"horaReserva\": \"18:00:00\",\n  \"estado\": \"PENDIENTE\",\n  \"observaciones\": \"Reunion familiar de maximo 20 personas.\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/reservas",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "reservas"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Reservas - Listar",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/reservas",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "reservas"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cuentas Cobro - Listar",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/cuentas-cobro",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "cuentas-cobro"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8081"
+    },
+    {
+      "key": "registerEmail",
+      "value": ""
+    },
+    {
+      "key": "registerDocument",
+      "value": ""
+    },
+    {
+      "key": "registerPassword",
+      "value": "1234"
+    },
+    {
+      "key": "residentId",
+      "value": ""
+    },
+    {
+      "key": "newsId",
+      "value": ""
+    },
+    {
+      "key": "incidentId",
+      "value": ""
+    },
+    {
+      "key": "reservationId",
+      "value": ""
+    }
+  ]
+}
