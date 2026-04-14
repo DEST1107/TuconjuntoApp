@@ -2,6 +2,7 @@ package com.tuconjuntoapp.framework.config;
 
 import com.tuconjuntoapp.framework.dto.ApiErrorResponse;
 import com.tuconjuntoapp.framework.exception.AuthenticationFailedException;
+import com.tuconjuntoapp.framework.exception.ResourceNotFoundException;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,6 +36,12 @@ public class ApiExceptionHandler {
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ApiErrorResponse> handleBusiness(IllegalArgumentException exception) {
         return ResponseEntity.badRequest()
+                .body(new ApiErrorResponse(exception.getMessage(), Collections.emptyList()));
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ApiErrorResponse> handleNotFound(ResourceNotFoundException exception) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(new ApiErrorResponse(exception.getMessage(), Collections.emptyList()));
     }
 }
