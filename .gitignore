@@ -7,5 +7,7 @@
 bin/
 out/
 target/
+node_modules/
+dist/
 
 Backend/TuConjuntoJDBC/src/com/tuconjuntoapp/openJdk-25/

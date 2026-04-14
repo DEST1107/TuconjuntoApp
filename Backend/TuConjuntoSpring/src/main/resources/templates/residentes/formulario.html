@@ -22,13 +22,13 @@
 
                 <div>
                     <label for="nombres">Nombres</label>
-                    <input id="nombres" type="text" th:field="*{nombres}">
+                    <input id="nombres" type="text" th:field="*{nombres}" maxlength="60">
                     <small class="error" th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}"></small>
                 </div>
 
                 <div>
                     <label for="apellidos">Apellidos</label>
-                    <input id="apellidos" type="text" th:field="*{apellidos}">
+                    <input id="apellidos" type="text" th:field="*{apellidos}" maxlength="60">
                     <small class="error" th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"></small>
                 </div>
 
@@ -44,25 +44,25 @@
 
                 <div>
                     <label for="numeroDocumento">Numero de documento</label>
-                    <input id="numeroDocumento" type="text" th:field="*{numeroDocumento}">
+                    <input id="numeroDocumento" type="text" th:field="*{numeroDocumento}" maxlength="20" inputmode="numeric">
                     <small class="error" th:if="${#fields.hasErrors('numeroDocumento')}" th:errors="*{numeroDocumento}"></small>
                 </div>
 
                 <div>
                     <label for="correo">Correo</label>
-                    <input id="correo" type="email" th:field="*{correo}">
+                    <input id="correo" type="email" th:field="*{correo}" maxlength="100">
                     <small class="error" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></small>
                 </div>
 
                 <div>
                     <label for="telefono">Telefono</label>
-                    <input id="telefono" type="text" th:field="*{telefono}">
+                    <input id="telefono" type="text" th:field="*{telefono}" maxlength="20" inputmode="tel">
                     <small class="error" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
                 </div>
 
                 <div>
                     <label for="passwordHash">Contrasena</label>
-                    <input id="passwordHash" type="text" th:field="*{passwordHash}">
+                    <input id="passwordHash" type="text" th:field="*{passwordHash}" maxlength="255">
                     <small class="error" th:if="${#fields.hasErrors('passwordHash')}" th:errors="*{passwordHash}"></small>
                 </div>
 
